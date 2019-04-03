@@ -11,21 +11,20 @@ class App extends React.Component {
             position => {
                 this.setState({lat: position.coords.latitude});
             },
-            err => {this.setState({ errorMessage: err.message})} 
+            err => {
+                this.setState({ errorMessage: err.message});
+            } 
         );
     }
     // react says we have to define render!!
     render () {
-        if(this.state.errorMessage && !this.state.lat) {
-            return <div>Error: {this.state.errorMessage}</div>
-        }
-        if(!this.state.errorMessage && this.state.lat) {
-            return <div>Latitude: {this.state.lat}</div>
-        }
-        if(!this.state.errorMessage && this.state.lat) {
-            return <div>Latitude: {this.state.lat}</div>
-        }
-        );
+        return (
+                <div>Latitude: {this.state.lat}
+                <br />
+                    Error: {this.state.errorMessage}
+                </div>
+                );
+      
     }
 }
 ReactDOM.render(<App />, document.querySelector('#root'));
