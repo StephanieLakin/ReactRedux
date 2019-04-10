@@ -5,15 +5,15 @@ import SeasonDisplay from './SeasonDisplay';
 
 class App extends React.Component {
     constructor(props){
-        super(props); // do every time a constructor function is defined inside of a class component
-        this.state = { lat: null, errorMessage: '' }; // this is the only time we ever do direct assignment to this.state
+        super(props); 
+
+       // this.state = { lat: null, errorMessage: '' };       
+    }
+    state = { lat: null, errorMessage: ''};
+        componentDidMount() {
         window.navigator.geolocation.getCurrentPosition(
-            position => {
-                this.setState({lat: position.coords.latitude});
-            },
-            err => {
-                this.setState({ errorMessage: err.message});
-            } 
+            position => this.setState({lat: position.coords.latitude}),            
+            err => this.setState({ errorMessage: err.message})
         );
     }
     componentDidMount () {
@@ -24,13 +24,9 @@ class App extends React.Component {
     }
     // react says we have to define render!!
     render () {
-        return (
-                <div>Latitude: {this.state.lat}
-                <br />
-                    Error: {this.state.errorMessage}
-                </div>
-                );
-      
+        return  <SeasonDisplay lat={this.state.lat} />
+                
+    
     }
 }
 ReactDOM.render(<App />, document.querySelector('#root'));
