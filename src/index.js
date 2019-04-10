@@ -24,6 +24,10 @@ class App extends React.Component {
     componentDidUpdate() {
         console.log('My component just updated; it rerendered!')
     }
+
+    renderContent() {
+        
+    }
     // react says we have to define render!!
     render () {
        { return  <SeasonDisplay lat={this.state.lat} />,
