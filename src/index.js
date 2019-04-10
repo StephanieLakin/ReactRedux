@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
+import Spinner from './spinner';
+
 
 
 class App extends React.Component {
@@ -24,9 +26,10 @@ class App extends React.Component {
     }
     // react says we have to define render!!
     render () {
-        return  <SeasonDisplay lat={this.state.lat} />
-                
-    
+       { return  <SeasonDisplay lat={this.state.lat} />,
+        
+       <Spinner message="Please accept location request..." />};
+            
     }
 }
 ReactDOM.render(<App />, document.querySelector('#root'));
